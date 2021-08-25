@@ -465,7 +465,7 @@ jtd.onReady(function(){
   initSearch();
   {%- endif %}
   {%- if site.zoom_img_enabled == true %}  
-  Lightense('img');  
+  Lightense('img' { background: 'rgba(0, 0, 0, .5)' });  
   {%- endif %}
 });
 
