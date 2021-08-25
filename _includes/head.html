@@ -30,7 +30,10 @@
     <script type="text/javascript" src="{{ '/assets/js/vendor/lunr.min.js' | relative_url }}"></script>
   {% endif %}
   <script type="text/javascript" src="{{ '/assets/js/just-the-docs.js' | relative_url }}"></script>
-
+  {% if site.zoom_img_enabled == true %}
+    <script type="text/javascript" src="{{ '/assets/js/vendor/lightense.min.js' | relative_url }}"></script>
+  {% endif %}
+  
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   {% seo %}
