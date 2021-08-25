@@ -464,6 +464,7 @@ jtd.onReady(function(){
   {%- if site.search_enabled != false %}
   initSearch();
   {%- endif %}
+  Lightense('img');
 });
 
 })(window.jtd = window.jtd || {});
