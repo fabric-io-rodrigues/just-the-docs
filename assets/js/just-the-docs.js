@@ -465,7 +465,11 @@ jtd.onReady(function(){
   initSearch();
   {%- endif %}
   {%- if site.zoom_img_enabled == true %}  
-  Lightense('img:not(.no-zoom)', { background: '{{ site.zoom_img.backgroud }}' });  
+  Lightense('img:not(.no-zoom)'
+      {% if site.zoom_img.backgroud %}
+          , { background: '{{ site.zoom_img.backgroud }}' }
+      {% endif %}
+  );  
   {%- endif %}
 });
 
