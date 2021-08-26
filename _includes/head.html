@@ -1,7 +1,7 @@
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-
+  <!-- build-commit-id: {{ site.github.build_revision }} -->
   {% unless site.plugins contains "jekyll-seo-tag" %}
     <title>{{ page.title }} - {{ site.title }}</title>
 
@@ -13,9 +13,9 @@
   <link rel="shortcut icon" href="{{ 'favicon.ico' | relative_url }}" type="image/x-icon">
   <script>
     let currentTheme = window.localStorage.getItem("theme");
-    let defaulTheme = "/assets/css/just-the-docs-default.css";
-    let darkTheme = "/assets/css/just-the-docs-dark.css";
-    let lightTheme = "/assets/css/just-the-docs-light.css";
+    let defaulTheme = "{{ '/assets/css/just-the-docs-default.css' | relative_url }}";
+    let darkTheme = "{{ '/assets/css/just-the-docs-dark.css' | relative_url }}";
+    let lightTheme = "{{ '/assets/css/just-the-docs-light.css' | relative_url }}";
     if (currentTheme) {
       if (currentTheme === "dark") 
         document.write('<link rel="stylesheet" href="' + darkTheme + '">');
