@@ -490,27 +490,20 @@ jtd.toggleTheme = function(changeColorBtn) {
 // Document ready
 
 jtd.onReady(function(){
-  {%- if site.change_color_enabled == true %}
-  const changeColorBtn = document.querySelector('.change-color');
-  if (changeColorBtn) {
-    jtd.addEvent(changeColorBtn, 'click', function(){ 
-      jtd.toggleTheme(changeColorBtn);
-    });
-    let currentTheme = window.localStorage.getItem("theme");
-    if (currentTheme) {
-      let currentColor = jtd.getThemeDefault();
-      if (currentTheme != currentColor) {
-        setTimeout(function() { jtd.toggleTheme(changeColorBtn); }, 10);
-      }
-    }
-  }
-  {%- endif %}
   initNav();
   {%- if site.search_enabled != false %}
   initSearch();
   {%- endif %}
   {%- if site.zoom_img_enabled == true %}  
   Lightense('img:not(.no-zoom)', { background: "rgba(0, 0, 0, .5)" } );
+  {%- endif %}
+  {%- if site.change_color_enabled == true %}
+  const changeColorBtn = document.querySelector('.change-color');
+  if (changeColorBtn) {
+    jtd.addEvent(changeColorBtn, 'click', function(){ 
+      jtd.toggleTheme(changeColorBtn);
+    });
+  }
   {%- endif %}
 });
 
