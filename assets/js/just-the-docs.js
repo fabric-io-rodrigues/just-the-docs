@@ -463,16 +463,27 @@ jtd.setTheme = function(theme) {
   jtd.color_scheme = "light";
 {% endif %}
 
-jtd.toggleTheme = function(changeColorBtn) {
+jtd.getThemeDefault = function() {
   let currentColor = jtd.getTheme();
-  if (currentColor === "default")
-    currentColor = jtd.color_scheme;
+  if (currentColor === "default") {
+    if (jtd.color_scheme === "default")
+      currentColor = "light";
+    else
+      currentColor = jtd.color_scheme;
+  }
+  return currentColor;
+}
+
+jtd.toggleTheme = function(changeColorBtn) {
+  let currentColor = jtd.getThemeDefault();
   if (currentColor === 'dark') { 
     jtd.setTheme('light'); 
     changeColorBtn.innerHTML = "<svg class=\"icon\"><use xlink:href=\"#svg-dark\"></use></svg>"
+    window.localStorage.setItem("theme", "light");
   } else { 
-    jtd.setTheme('dark'); 
+    jtd.setTheme('dark');
     changeColorBtn.innerHTML = "<svg class=\"icon\"><use xlink:href=\"#svg-light\"></use></svg>"
+    window.localStorage.setItem("theme", "dark");
   } 
 }
  
@@ -492,6 +503,12 @@ jtd.onReady(function(){
     jtd.addEvent(changeColorBtn, 'click', function(){ 
       jtd.toggleTheme(changeColorBtn);
     });
+    let currentTheme = window.localStorage.getItem("theme");
+    if (currentTheme) {
+      let currentColor = jtd.getThemeDefault();
+      if (currentTheme != currentColor)
+        jtd.toggleTheme(changeColorBtn);
+    }
   }
   {%- endif %}
 });
