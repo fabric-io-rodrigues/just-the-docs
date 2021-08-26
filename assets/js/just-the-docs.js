@@ -506,8 +506,9 @@ jtd.onReady(function(){
     let currentTheme = window.localStorage.getItem("theme");
     if (currentTheme) {
       let currentColor = jtd.getThemeDefault();
-      if (currentTheme != currentColor)
-        jtd.toggleTheme(changeColorBtn);
+      if (currentTheme != currentColor) {
+        setTimeout(function() { jtd.toggleTheme(changeColorBtn); }, 100);
+      }
     }
   }
   {%- endif %}
