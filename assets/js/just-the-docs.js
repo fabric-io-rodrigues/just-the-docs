@@ -465,11 +465,21 @@ jtd.onReady(function(){
   initSearch();
   {%- endif %}
   {%- if site.zoom_img_enabled == true %}  
-  Lightense('img:not(.no-zoom)'
-      {% if site.zoom_img.backgroud %}
-          , { background: '{{ site.zoom_img.backgroud }}' }
-      {% endif %}
-  );  
+  Lightense('img:not(.no-zoom)', { background: "rgba(0, 0, 0, .5)" } );
+  {%- endif %}
+  {%- if site.change_color_enabled == true %}
+  const changeColorBtn = document.querySelector('.change-color');
+  if (changeColorBtn) {
+    jtd.addEvent(changeColorBtn, 'click', function(){ 
+      if (jtd.getTheme() === 'dark') { 
+        jtd.setTheme('light'); 
+        changeColorBtn.innerHTML = "<svg class=\"icon\"><use xlink:href=\"#svg-dark\"></use></svg>"
+      } else { 
+        jtd.setTheme('dark'); 
+        changeColorBtn.innerHTML = "<svg class=\"icon\"><use xlink:href=\"#svg-light\"></use></svg>"
+      } 
+    });
+  }
   {%- endif %}
 });
 
