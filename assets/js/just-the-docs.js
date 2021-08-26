@@ -457,6 +457,25 @@ jtd.setTheme = function(theme) {
   cssFile.setAttribute('href', '{{ "assets/css/just-the-docs-" | absolute_url }}' + theme + '.css');
 }
 
+{% if site.color_scheme and site.color_scheme != "nil" %}
+  jtd.color_scheme = "{{ site.color_scheme }}";
+{% else %}
+  jtd.color_scheme = "light";
+{% endif %}
+
+jtd.toggleTheme = function() {
+  let currentColor = jtd.getTheme();
+  if (currentColor === "default")
+    currentColor = jtd.color_scheme;
+  if (currentColor === 'dark') { 
+    jtd.setTheme('light'); 
+    changeColorBtn.innerHTML = "<svg class=\"icon\"><use xlink:href=\"#svg-dark\"></use></svg>"
+  } else { 
+    jtd.setTheme('dark'); 
+    changeColorBtn.innerHTML = "<svg class=\"icon\"><use xlink:href=\"#svg-light\"></use></svg>"
+  } 
+}
+ 
 // Document ready
 
 jtd.onReady(function(){
@@ -471,13 +490,7 @@ jtd.onReady(function(){
   const changeColorBtn = document.querySelector('.change-color');
   if (changeColorBtn) {
     jtd.addEvent(changeColorBtn, 'click', function(){ 
-      if (jtd.getTheme() === 'dark') { 
-        jtd.setTheme('light'); 
-        changeColorBtn.innerHTML = "<svg class=\"icon\"><use xlink:href=\"#svg-dark\"></use></svg>"
-      } else { 
-        jtd.setTheme('dark'); 
-        changeColorBtn.innerHTML = "<svg class=\"icon\"><use xlink:href=\"#svg-light\"></use></svg>"
-      } 
+      jtd.toggleTheme();
     });
   }
   {%- endif %}
