@@ -463,7 +463,7 @@ jtd.setTheme = function(theme) {
   jtd.color_scheme = "light";
 {% endif %}
 
-jtd.toggleTheme = function() {
+jtd.toggleTheme = function(changeColorBtn) {
   let currentColor = jtd.getTheme();
   if (currentColor === "default")
     currentColor = jtd.color_scheme;
@@ -490,7 +490,7 @@ jtd.onReady(function(){
   const changeColorBtn = document.querySelector('.change-color');
   if (changeColorBtn) {
     jtd.addEvent(changeColorBtn, 'click', function(){ 
-      jtd.toggleTheme();
+      jtd.toggleTheme(changeColorBtn);
     });
   }
   {%- endif %}
