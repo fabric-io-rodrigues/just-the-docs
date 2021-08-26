@@ -490,13 +490,6 @@ jtd.toggleTheme = function(changeColorBtn) {
 // Document ready
 
 jtd.onReady(function(){
-  initNav();
-  {%- if site.search_enabled != false %}
-  initSearch();
-  {%- endif %}
-  {%- if site.zoom_img_enabled == true %}  
-  Lightense('img:not(.no-zoom)', { background: "rgba(0, 0, 0, .5)" } );
-  {%- endif %}
   {%- if site.change_color_enabled == true %}
   const changeColorBtn = document.querySelector('.change-color');
   if (changeColorBtn) {
@@ -511,6 +504,13 @@ jtd.onReady(function(){
       }
     }
   }
+  {%- endif %}
+  initNav();
+  {%- if site.search_enabled != false %}
+  initSearch();
+  {%- endif %}
+  {%- if site.zoom_img_enabled == true %}  
+  Lightense('img:not(.no-zoom)', { background: "rgba(0, 0, 0, .5)" } );
   {%- endif %}
 });
 
