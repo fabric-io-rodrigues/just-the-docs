@@ -507,7 +507,7 @@ jtd.onReady(function(){
     if (currentTheme) {
       let currentColor = jtd.getThemeDefault();
       if (currentTheme != currentColor) {
-        setTimeout(function() { jtd.toggleTheme(changeColorBtn); }, 100);
+        setTimeout(function() { jtd.toggleTheme(changeColorBtn); }, 10);
       }
     }
   }
