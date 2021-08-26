@@ -11,9 +11,21 @@
   {% endunless %}
 
   <link rel="shortcut icon" href="{{ 'favicon.ico' | relative_url }}" type="image/x-icon">
-
-  <link rel="stylesheet" href="{{ '/assets/css/just-the-docs-default.css' | relative_url }}">
-
+  <script>
+    let currentTheme = window.localStorage.getItem("theme");
+    let defaulTheme = "/assets/css/just-the-docs-default.css";
+    let darkTheme = "/assets/css/just-the-docs-dark.css";
+    let lightTheme = "/assets/css/just-the-docs-light.css";
+    if (currentTheme) {
+      if (currentTheme === "dark") 
+        document.write('<link rel="stylesheet" href="' + darkTheme + '">');
+      else
+        document.write('<link rel="stylesheet" href="' + lightTheme + '">');
+    } else {
+        document.write('<link rel="stylesheet" href="' + defaulTheme + '">');
+    }
+  </script>  
+  
   {% if site.ga_tracking != nil %}
     <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.ga_tracking }}"></script>
     <script>
