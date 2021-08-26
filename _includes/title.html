@@ -1,5 +1,10 @@
-{% if site.logo %}
-  <div class="site-logo"></div>
+{% if site.psr_model %}
+  <div class="site-logo" style="width: 45px; height: 45px; margin-right: 20px;"></div>
+  <span style="white-space: nowrap; overflow: hidden;">{{ site.psr_model }}</span>
 {% else %}
-  {{ site.title }}
+  {% if site.logo %}
+    <div class="site-logo"></div>
+  {% else %}
+    {{ site.title }}
+  {% endif %}
 {% endif %}
